@@ -5,12 +5,12 @@ import Tablets from './pages/Tablets';
 import Accessories from './pages/Accessories';
 import Phones from './pages/Phones';
 import NotFoundPage from './pages/NotFoundPage';
-import Header from './components/Header';
+import Navbar from './components/Navbar';
 
 export const App = () => (
   <BrowserRouter>
     <div className="App">
-      <Header />
+      <Navbar />
       <div className="section">
         <Routes>
           <Route path="/" element={<Home />} />
