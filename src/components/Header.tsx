@@ -7,7 +7,8 @@ const Header = () => {
 
   return (
     <header className="header">
-      <div className="container">
+      <div className="container column">
+        <h1 className="header__title">Welcome to Nice Gadgets store!</h1>
         <Carousel
           carouselItem={carouselItem}
           setCarouselItem={setCarouselItem}
