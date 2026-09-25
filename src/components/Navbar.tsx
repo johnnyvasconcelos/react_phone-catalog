@@ -45,10 +45,10 @@ const Navbar = () => {
           }
         >
           <li className="navbar__icon">
-            <img src="/img/heart.svg" alt="heart icon png" />
+            <img src="/img/heart.svg" alt="heart icon svg" />
           </li>
           <li className="navbar__icon">
-            <img src="/img/shopping-bag.svg" alt="bag icon png" />
+            <img src="/img/shopping-bag.svg" alt="bag icon svg" />
           </li>
         </ul>
         <button
