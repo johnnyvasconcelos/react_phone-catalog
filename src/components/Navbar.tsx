@@ -45,10 +45,10 @@ const Navbar = () => {
           }
         >
           <li className="navbar__icon">
-            <img src="/img/heart.png" alt="heart icon png" />
+            <img src="/img/heart.svg" alt="heart icon png" />
           </li>
           <li className="navbar__icon">
-            <img src="/img/shopping-bag.png" alt="bag icon png" />
+            <img src="/img/shopping-bag.svg" alt="bag icon png" />
           </li>
         </ul>
         <button
@@ -56,7 +56,7 @@ const Navbar = () => {
           onClick={() => setShowMenu(!showMenu)}
         >
           <img
-            src={showMenu ? '/img/close.png' : '/img/menu.png'}
+            src={showMenu ? '/img/close.svg' : '/img/menu.svg'}
             alt="menu icon png"
             className="navbar__button"
           />

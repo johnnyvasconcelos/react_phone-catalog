@@ -36,7 +36,7 @@ const Carousel = ({ carouselItem, setCarouselItem }: CarouselProps) => {
               movePrev();
             }}
           >
-            &lt;
+            <img src="/img/left.svg" alt="icon left chevron svg" />
           </button>
           <div className="header__space">
             <div
@@ -61,7 +61,7 @@ const Carousel = ({ carouselItem, setCarouselItem }: CarouselProps) => {
               moveNext();
             }}
           >
-            &gt;
+            <img src="/img/right.svg" alt="icon right chevron svg" />
           </button>
         </div>
       </div>
