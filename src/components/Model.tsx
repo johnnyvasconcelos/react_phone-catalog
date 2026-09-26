@@ -1,0 +1,37 @@
+import { Product } from '../interface/Product';
+
+interface ModelProps {
+  item: Product;
+}
+
+const Model = ({ item }: ModelProps) => {
+  return (
+    <article className="model__item">
+      <img src={item.image} alt={item.name} className="model__image" />
+      <h2 className="model__title">{item.name}</h2>
+      <h3 className="model__price">{item.price}</h3>
+      <table className="model__table">
+        <tr>
+          <td>Screen</td>
+          <td>{item.screen}</td>
+        </tr>
+        <tr>
+          <td>Capacity</td>
+          <td>{item.capacity}</td>
+        </tr>
+        <tr>
+          <td>RAM</td>
+          <td>{item.ram}</td>
+        </tr>
+      </table>
+      <div className="model__footer">
+        <button className="model_button">Add to cart</button>
+        <div className="model__heart">
+          <img src="/img/heart.svg" alt="heart icon svg" />
+        </div>
+      </div>
+    </article>
+  );
+};
+
+export default Model;

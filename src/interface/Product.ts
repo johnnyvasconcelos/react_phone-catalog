@@ -12,3 +12,10 @@ export interface Product {
   year: number;
   image: string;
 }
+
+export interface CategoriyItem {
+  id: string;
+  title: string;
+  image: string;
+  quantity: number;
+}

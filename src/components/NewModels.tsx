@@ -1,6 +1,7 @@
 import './NewModels.scss';
 import { useEffect, useState } from 'react';
 import Loading from './Loading';
+import Model from './Model';
 import { Product } from '../interface/Product';
 
 const NewModels = () => {
@@ -27,9 +28,11 @@ const NewModels = () => {
       <div className="container column">
         <h2 className="models__title">Brand new models</h2>
         {loading && <Loading />}
-        {data.slice(0, 3).map(item => {
-          return <div key={item.id}>{item.name}</div>;
-        })}
+        <div className="models__items">
+          {data.slice(0, 4).map(item => {
+            return <Model item={item} key={item.id} />;
+          })}
+        </div>
       </div>
     </section>
   );
