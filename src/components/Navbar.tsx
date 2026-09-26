@@ -2,10 +2,12 @@
 // import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { useState } from 'react';
 import './Navbar.scss';
+import { useLocation } from 'react-router-dom';
 
 import { Link } from 'react-router-dom';
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
+  const location = useLocation();
 
   return (
     <nav className="navbar">
@@ -18,22 +20,46 @@ const Navbar = () => {
             showMenu ? 'navbar__menu navbar__menu--active' : 'navbar__menu'
           }
         >
-          <li className="navbar__item navbar__item--active">
+          <li
+            className={
+              location.pathname === '' || location.pathname === '/'
+                ? 'navbar__item navbar__item--active'
+                : 'navbar__item'
+            }
+          >
             <Link to="/home" className="navbar__link">
               Home
             </Link>
           </li>
-          <li className="navbar__item">
+          <li
+            className={
+              location.pathname === '/phones'
+                ? 'navbar__item navbar__item--active'
+                : 'navbar__item'
+            }
+          >
             <Link to="/phones" className="navbar__link">
               Phones
             </Link>
           </li>
-          <li className="navbar__item">
+          <li
+            className={
+              location.pathname === '/tablets'
+                ? 'navbar__item navbar__item--active'
+                : 'navbar__item'
+            }
+          >
             <Link to="/tablets" className="navbar__link">
               Tablets
             </Link>
           </li>
-          <li className="navbar__item">
+          <li
+            className={
+              location.pathname === '/accessories'
+                ? 'navbar__item navbar__item--active'
+                : 'navbar__item'
+            }
+          >
             <Link to="/accessories" className="navbar__link">
               Accessories
             </Link>
