@@ -11,6 +11,7 @@ export interface Product {
   ram: string;
   year: number;
   image: string;
+  images?: string[];
 }
 
 export interface CategoriyItem {

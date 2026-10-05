@@ -2,12 +2,17 @@ import { Product } from '../interface/Product';
 
 interface ModelProps {
   item: Product;
+  catalog?: boolean;
 }
 
-const Model = ({ item }: ModelProps) => {
+const Model = ({ item, catalog }: ModelProps) => {
   return (
     <article className="model__item">
-      <img src={item.image} alt={item.name} className="model__image" />
+      <img
+        src={catalog ? item.images?.[0] : item.image}
+        alt={item.name}
+        className="model__image"
+      />
       <h2 className="model__title">{item.name}</h2>
       <h3 className="model__price">{item.price}</h3>
       <table className="model__table">
