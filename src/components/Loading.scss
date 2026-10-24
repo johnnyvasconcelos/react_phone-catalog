@@ -1,3 +1,12 @@
-* {
-    margin: 0;
+.loading {
+  width: 100%;
+  display: flex;
+  padding: 0 20px;
+  align-items: center;
+  justify-content: flex-start;
+
+  img {
+    width: 30px;
+    display: block;
+  }
 }

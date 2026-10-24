@@ -2,7 +2,7 @@ import './Loading.scss';
 
 const Loading = () => {
   return (
-    <div>
+    <div className="loading">
       <img src="/img/loading.svg" alt="loading icon svg" />
     </div>
   );

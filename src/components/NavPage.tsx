@@ -1,13 +1,18 @@
 import { Link } from 'react-router-dom';
+import './NavPage.scss';
 
-const NavPage = () => {
+interface NavPageProps {
+  page: string;
+}
+
+const NavPage = ({ page }: NavPageProps) => {
   return (
     <nav className="navpage">
-      <div className="container">
-        <Link to="/">
-          <img src="/img/home.svg" alt="icon home svg" />
-        </Link>
-      </div>
+      <Link to="/">
+        <img src="/img/home.svg" alt="icon home svg" />
+      </Link>
+      <img src="/img/chevron-right-light.svg" alt="icon chevron svg" />
+      <p className="navpage__title">{page}</p>
     </nav>
   );
 };
