@@ -16,8 +16,8 @@ const Tablets = () => {
   // pagination
 
   const [page, setPage] = useState(1);
-  const startPage = (page - 1) * 16;
-  const endPage = startPage + 16;
+  let startPage = (page - 1) * 16;
+  let endPage = startPage + 16;
   const totalPages = Math.ceil(data.length / 16);
   const pages = [];
 
@@ -37,7 +37,14 @@ const Tablets = () => {
       });
   }, []);
 
-  for (let i = 1; i < totalPages; i++) {
+  useEffect(() => {
+    startPage = (page - 1) * 16;
+    endPage = startPage + 16;
+
+    setItems(data.slice(startPage, endPage));
+  }, [page, data]);
+
+  for (let i = 1; i <= totalPages; i++) {
     pages.push(i);
   }
 

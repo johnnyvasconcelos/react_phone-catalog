@@ -1,4 +1,5 @@
 import './Pagination.scss';
+import { useSearchParams } from 'react-router-dom';
 
 interface PaginationProps {
   pages: number[];
@@ -6,6 +7,8 @@ interface PaginationProps {
 }
 
 const Pagination = ({ pages, setPage }: PaginationProps) => {
+  const [, setSearchParams] = useSearchParams();
+
   return (
     <nav className="products__pagination">
       <button className="products__link">
@@ -17,6 +20,7 @@ const Pagination = ({ pages, setPage }: PaginationProps) => {
             key={p}
             onClick={() => {
               setPage(p);
+              setSearchParams({ page: p.toString() });
             }}
             className="products__link"
           >
