@@ -63,7 +63,7 @@ const Tablets = () => {
             })}
           </div>
 
-          <Pagination pages={pages} setPage={setPage} />
+          <Pagination pages={pages} setPage={setPage} currentPage={page} />
         </section>
       </main>
       <Footer />
