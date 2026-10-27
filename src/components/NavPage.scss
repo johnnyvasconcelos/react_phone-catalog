@@ -16,3 +16,22 @@
     font-weight: 500;
   }
 }
+
+.navpage__back {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--dark-gray);
+  font-weight: 500;
+  margin-bottom: 20px;
+
+  img {
+    width: 6px;
+  }
+
+  p {
+    font-size: 14px;
+    color: var(--dark-gray);
+    font-weight: 500;
+  }
+}

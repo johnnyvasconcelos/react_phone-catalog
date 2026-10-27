@@ -2,21 +2,82 @@ import Footer from '../components/Footer';
 import './Product.scss';
 import { useParams } from 'react-router-dom';
 import NavPage from '../components/NavPage';
+import ProductImages from '../components/ProductImages';
+import { useEffect, useState } from 'react';
+import Loading from '../components/Loading';
+import { Product } from '../interface/Product';
 
-const Product = () => {
+const ProductItem = () => {
   const { product } = useParams();
+
+  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState<Product[]>([]);
+  const [productExists, setProductExists] = useState<Product | undefined>(
+    undefined,
+  );
+  const [realProduct, setRealProduct] = useState<Product | undefined>(
+    undefined,
+  );
+
+  useEffect(() => {
+    fetch('http://localhost:5173/api/products.json')
+      .then(response => response.json())
+      .then(result => {
+        setData(result);
+      })
+      .catch(error => {
+        // eslint-disable-next-line no-console
+        console.error(error);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, []);
+
+  useEffect(() => {
+    if (product) {
+      const foundProduct = data.find(item => item.name === product);
+
+      setProductExists(foundProduct);
+    }
+  }, [data, product]);
+
+  useEffect(() => {
+    const category = productExists?.category;
+
+    fetch(`http://localhost:5173/api/${category}.json`)
+      .then(response => response.json())
+      .then((result: Product[]) => {
+        const foundProduct = result.find(
+          item => item.name === productExists?.name,
+        );
+
+        setRealProduct(foundProduct);
+      })
+      .catch(error => {
+        // eslint-disable-next-line no-console
+        console.error(error);
+      });
+  }, [productExists]);
 
   return (
     <>
       <div className="container column">
         <NavPage page="Phones" products={product} />
-        <div className="product">
-          <h1>{product}</h1>
-        </div>
+        {loading ? (
+          <Loading />
+        ) : (
+          <div className="product">
+            <h1 className="product__title">{product}</h1>
+            <main className="product__main">
+              {realProduct && <ProductImages product={realProduct} />}
+            </main>
+          </div>
+        )}
       </div>
       <Footer />
     </>
   );
 };
 
-export default Product;
+export default ProductItem;
