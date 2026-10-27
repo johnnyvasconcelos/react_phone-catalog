@@ -1,4 +1,5 @@
 import { Product } from '../interface/Product';
+import { useNavigate } from 'react-router-dom';
 
 interface ModelProps {
   item: Product;
@@ -6,6 +7,8 @@ interface ModelProps {
 }
 
 const Model = ({ item, catalog }: ModelProps) => {
+  const navigate = useNavigate();
+
   return (
     <article className="model__item">
       <img
@@ -30,7 +33,12 @@ const Model = ({ item, catalog }: ModelProps) => {
         </tr>
       </table>
       <div className="model__footer">
-        <button className="model_button">Add to cart</button>
+        <button
+          className="model_button"
+          onClick={() => navigate(`/products/${encodeURIComponent(item.name)}`)}
+        >
+          Add to cart
+        </button>
         <div className="model__heart">
           <img src="/img/heart.svg" alt="heart icon svg" />
         </div>

@@ -6,6 +6,7 @@ import Accessories from './pages/Accessories';
 import Phones from './pages/Phones';
 import NotFoundPage from './pages/NotFoundPage';
 import Navbar from './components/Navbar';
+import Product from './pages/Product';
 
 export const App = () => (
   <BrowserRouter>
@@ -18,6 +19,7 @@ export const App = () => (
           <Route path="tablets" element={<Tablets />} />
           <Route path="phones" element={<Phones />} />
           <Route path="accessories" element={<Accessories />} />
+          <Route path="/products/:product" element={<Product />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </div>

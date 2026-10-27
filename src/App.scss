@@ -1,5 +1,9 @@
 // not empty
 
+$laptop: 990px;
+$tablet: 767px;
+$mobile: 560px;
+
 // variables
 
 :root {
@@ -67,4 +71,30 @@ body {
 .container.column,
 .column {
   flex-direction: column;
+}
+
+.not-found-image {
+  width: 90%;
+  margin: 120px auto 20px;
+  display: block;
+  max-width: 450px;
+}
+
+@media (max-width: $laptop) {
+  .not-found-image {
+    margin: 80px auto 20px;
+  }
+}
+
+@media (max-width: $tablet) {
+  .not-found-image {
+    margin: 60px auto 20px;
+  }
+}
+
+@media (max-width: $mobile) {
+  .not-found-image {
+    margin: 40px auto 5px;
+    max-width: 250px;
+  }
 }
