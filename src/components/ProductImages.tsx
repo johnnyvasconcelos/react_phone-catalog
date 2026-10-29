@@ -11,6 +11,10 @@ const ProductImages = ({ product, realProduct }: ProductImagesProps) => {
 
   const [currentImage, setCurrentImage] = useState(realProduct.images?.[0]);
 
+  const [currentColor, setCurrentColor] = useState(
+    realProduct.colorsAvailable?.[0],
+  );
+
   return (
     <div className="product__images">
       <div className="product__carousel">
@@ -42,10 +46,13 @@ const ProductImages = ({ product, realProduct }: ProductImagesProps) => {
             <div
               key={i}
               className={
-                realProduct.color === color
+                currentColor === color
                   ? 'product__color product__color--active'
                   : 'product__color'
               }
+              onClick={() => {
+                setCurrentColor(color);
+              }}
             >
               <div
                 className="product__circle"

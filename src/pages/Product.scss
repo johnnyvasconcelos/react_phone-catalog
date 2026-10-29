@@ -59,7 +59,6 @@
         display: flex;
         overflow: hidden;
         cursor: pointer;
-        transition: var(--transition);
         border: 1px solid var(--light-gray);
 
         .product__circle {
