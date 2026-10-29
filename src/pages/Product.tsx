@@ -5,7 +5,7 @@ import NavPage from '../components/NavPage';
 import ProductImages from '../components/ProductImages';
 import { useEffect, useState } from 'react';
 import Loading from '../components/Loading';
-import { Product } from '../interface/Product';
+import { Product, Phone } from '../interface/Product';
 
 const ProductItem = () => {
   const { product } = useParams();
@@ -15,9 +15,7 @@ const ProductItem = () => {
   const [productExists, setProductExists] = useState<Product | undefined>(
     undefined,
   );
-  const [realProduct, setRealProduct] = useState<Product | undefined>(
-    undefined,
-  );
+  const [realProduct, setRealProduct] = useState<Phone | undefined>(undefined);
 
   useEffect(() => {
     fetch('http://localhost:5173/api/products.json')
@@ -47,7 +45,7 @@ const ProductItem = () => {
 
     fetch(`http://localhost:5173/api/${category}.json`)
       .then(response => response.json())
-      .then((result: Product[]) => {
+      .then((result: Phone[]) => {
         const foundProduct = result.find(
           item => item.name === productExists?.name,
         );
@@ -70,7 +68,12 @@ const ProductItem = () => {
           <div className="product">
             <h1 className="product__title">{product}</h1>
             <main className="product__main">
-              {realProduct && <ProductImages product={realProduct} />}
+              {productExists && realProduct && (
+                <ProductImages
+                  product={productExists}
+                  realProduct={realProduct}
+                />
+              )}
             </main>
           </div>
         )}
