@@ -3,6 +3,7 @@ import './Product.scss';
 import { useParams } from 'react-router-dom';
 import NavPage from '../components/NavPage';
 import ProductData from '../components/ProductData';
+import ProductParagraphs from '../components/ProductParagraphs';
 import { useEffect, useState } from 'react';
 import Loading from '../components/Loading';
 import { Product, Phone } from '../interface/Product';
@@ -69,10 +70,13 @@ const ProductItem = () => {
             <h1 className="product__title">{product}</h1>
             <main className="product__main">
               {productExists && realProduct && (
-                <ProductData
-                  product={productExists}
-                  realProduct={realProduct}
-                />
+                <>
+                  <ProductData
+                    product={productExists}
+                    realProduct={realProduct}
+                  />
+                  <ProductParagraphs realProduct={realProduct} />
+                </>
               )}
             </main>
           </div>
