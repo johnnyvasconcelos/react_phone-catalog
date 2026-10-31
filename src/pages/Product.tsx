@@ -2,7 +2,7 @@ import Footer from '../components/Footer';
 import './Product.scss';
 import { useParams } from 'react-router-dom';
 import NavPage from '../components/NavPage';
-import ProductImages from '../components/ProductImages';
+import ProductData from '../components/ProductData';
 import { useEffect, useState } from 'react';
 import Loading from '../components/Loading';
 import { Product, Phone } from '../interface/Product';
@@ -69,7 +69,7 @@ const ProductItem = () => {
             <h1 className="product__title">{product}</h1>
             <main className="product__main">
               {productExists && realProduct && (
-                <ProductImages
+                <ProductData
                   product={productExists}
                   realProduct={realProduct}
                 />

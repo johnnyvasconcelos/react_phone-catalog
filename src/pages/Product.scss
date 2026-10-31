@@ -1,4 +1,4 @@
-.product__images {
+.product__data {
   margin-top: 40px;
   display: flex;
   justify-content: flex-start;
@@ -83,6 +83,98 @@
       width: 100%;
       background-color: var(--light-gray);
       margin: 20px 0;
+    }
+
+    .product__capacities {
+      display: flex;
+      gap: 10px;
+
+      .product__capacity {
+        padding: 5px 8px;
+        border: 1px solid var(--dark-gray);
+        cursor: pointer;
+        border-radius: 5px;
+        font-size: 14px;
+        font-weight: 500;
+
+        &.product__capacity--active {
+          background-color: var(--dark);
+          border: 1px solid var(--dark);
+          color: var(--light);
+        }
+
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+
+    .product__price {
+      font-size: 28px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      .product__subprice {
+        color: var(--dark-gray);
+        text-decoration: line-through;
+        font-weight: 400;
+        font-size: 20px;
+      }
+    }
+
+    .product__buttons {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+
+      .product__button {
+        padding: 0 25px;
+        height: 48px;
+        border-radius: 8px;
+        border: none;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 600;
+        background-color: var(--emphasis);
+        color: var(--light);
+        min-width: 220px;
+
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+
+      .product__favorite {
+        border-radius: 50%;
+        width: 48px;
+        height: 48px;
+        cursor: pointer;
+        border: 1px solid var(--dark-gray);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    .product__table {
+      margin-top: 20px;
+      width: 100%;
+
+      tr {
+        height: 20px;
+
+        td {
+          font-size: 12px;
+          color: var(--dark-gray);
+          font-weight: 600;
+
+          &:nth-of-type(2) {
+            color: var(--dark);
+            text-align: right;
+          }
+        }
+      }
     }
   }
 }
