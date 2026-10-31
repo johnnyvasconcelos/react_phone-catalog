@@ -1,6 +1,7 @@
 import { Product, Phone } from '../interface/Product';
 import { useState } from 'react';
 import ProductInfo from './ProductInfo';
+import ProductCarousel from './ProductCarousel';
 
 interface ProductDataProps {
   product: Product;
@@ -10,7 +11,9 @@ interface ProductDataProps {
 const ProductData = ({ product, realProduct }: ProductDataProps) => {
   const [imageActive, setImageActive] = useState(0);
 
-  const [currentImage, setCurrentImage] = useState(realProduct.images?.[0]);
+  const [currentImage, setCurrentImage] = useState<string | undefined>(
+    realProduct.images?.[0],
+  );
   const [currentCapacity, setCurrentCapacity] = useState<string | undefined>(
     realProduct.capacityAvailable?.[0],
   );
@@ -21,35 +24,88 @@ const ProductData = ({ product, realProduct }: ProductDataProps) => {
 
   return (
     <div className="product__data">
-      <div className="product__carousel">
-        {realProduct.images?.map((image, i) => (
-          <div
-            key={i}
-            className={
-              imageActive === i ? 'product__item active' : 'product__item'
-            }
-            onClick={() => {
-              setImageActive(i);
-              setCurrentImage(realProduct.images?.[i]);
-            }}
-          >
-            <img src={`/${image}`} alt={`${product.name} ${i + 1}`} />
+      <div className="product__column">
+        <div className="product__images">
+          <ProductCarousel
+            product={product}
+            realProduct={realProduct}
+            imageActive={imageActive}
+            setImageActive={setImageActive}
+            setCurrentImage={setCurrentImage}
+          />
+          <img
+            className="product__image"
+            src={`/${currentImage}`}
+            alt={product.name}
+          />
+        </div>
+        <div className="product__about">
+          <h2 className="product__title">About</h2>
+          <div className="product__text">
+            {realProduct.description?.map(
+              (text: { title: string; text: string[] }, i: number) => {
+                return (
+                  <div key={i}>
+                    <h3>{text.title}</h3>
+                    {text.text.map((paragraph, j) => (
+                      <p key={j}>{paragraph}</p>
+                    ))}
+                  </div>
+                );
+              },
+            )}
           </div>
-        ))}
+        </div>
       </div>
-      <img
-        className="product__image"
-        src={`/${currentImage}`}
-        alt={product.name}
-      />
-
-      <ProductInfo
-        realProduct={realProduct}
-        currentCapacity={currentCapacity}
-        setCurrentCapacity={setCurrentCapacity}
-        currentColor={currentColor}
-        setCurrentColor={setCurrentColor}
-      />
+      <div className="product__column">
+        <div className="product__specification">
+          <ProductInfo
+            realProduct={realProduct}
+            currentCapacity={currentCapacity}
+            setCurrentCapacity={setCurrentCapacity}
+            currentColor={currentColor}
+            setCurrentColor={setCurrentColor}
+          />
+        </div>
+        <div className="product__specs">
+          <h2 className="product__title">Tech specs</h2>
+          <table className="product__spectable">
+            <tr>
+              <td>Screen</td>
+              <td>{realProduct.screen}</td>
+            </tr>
+            <tr>
+              <td>Resolution</td>
+              <td>{realProduct.resolution}</td>
+            </tr>
+            <tr>
+              <td>Processor</td>
+              <td>{realProduct.processor}</td>
+            </tr>
+            <tr>
+              <td>RAM</td>
+              <td>{realProduct.ram}</td>
+            </tr>
+            <tr>
+              <td>Built in memory</td>
+              <td>{realProduct.capacity}</td>
+            </tr>
+            <tr>
+              <td>Camera</td>
+              <td>{realProduct.camera}</td>
+            </tr>
+            <tr>
+              <td>Zoom</td>
+              <td>{realProduct.zoom}</td>
+            </tr>
+            <tr>
+              <td>Cell</td>
+              <td>{realProduct.cell}</td>
+            </tr>
+          </table>
+        </div>
+        <span className="product__id">ID: {product.id}</span>
+      </div>
     </div>
   );
 };
